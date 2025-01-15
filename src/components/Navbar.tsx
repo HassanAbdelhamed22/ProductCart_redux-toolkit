@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import Button from "./ui/Button";
+import { useSelector } from "react-redux";
+import { cartSelector } from "../app/features/cart/cartSlice";
 
 const Navbar = () => {
+  const { cartItems } = useSelector(cartSelector);
+
   return (
     <nav className="bg-gray-900 p-4 text-gray-100 shadow-lg rounded-lg mt-5 max-w-screen-xl container mx-auto flex">
       <div className=" justify-between items-center max-w-screen-lg container mx-auto flex">
@@ -44,7 +48,7 @@ const Navbar = () => {
               to="/cart"
               className="hover:text-blue-300 transition duration-200"
             >
-              Cart
+              Cart({cartItems.length})
             </Link>
           </li>
         </ul>

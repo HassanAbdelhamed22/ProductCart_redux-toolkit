@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../../../interface";
 import { addItemToShoppingCart } from "../../../utils/functions";
+import { RootState } from "../../store";
 
 export interface CounterState {
   cartItems: Product[];
@@ -16,12 +17,16 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCartAction: (state, actionPayload: PayloadAction<Product>) => {
-      state.cartItems = addItemToShoppingCart(state.cartItems, actionPayload.payload);
+      state.cartItems = addItemToShoppingCart(
+        state.cartItems,
+        actionPayload.payload
+      );
     },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const { addItemToCartAction } = cartSlice.actions;
+export const cartSelector = ({ cart }: RootState) => cart;
 
 export default cartSlice.reducer;
