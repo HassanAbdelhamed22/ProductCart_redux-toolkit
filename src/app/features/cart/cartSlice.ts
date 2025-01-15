@@ -22,11 +22,17 @@ export const cartSlice = createSlice({
         actionPayload.payload
       );
     },
+    deleteItemFromCartAction: (state, actionPayload: PayloadAction<number>) => {
+      state.cartItems = state.cartItems.filter(
+        (item) => item.id !== actionPayload.payload
+      );
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addItemToCartAction } = cartSlice.actions;
+export const { addItemToCartAction, deleteItemFromCartAction } =
+  cartSlice.actions;
 export const cartSelector = ({ cart }: RootState) => cart;
 
 export default cartSlice.reducer;

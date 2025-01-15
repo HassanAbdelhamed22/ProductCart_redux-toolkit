@@ -16,10 +16,10 @@ const router = createBrowserRouter(
     <>
       <Route path="/" element={<Layout />} errorElement={<ErrorHandler />}>
         <Route index element={<Home />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/features" element={<Features />} />
+        <Route path="/cart" element={<Cart />} />
       </Route>
-      <Route path="/pricing" element={<Pricing />} />
-      <Route path="/features" element={<Features />} />
-      <Route path="/cart" element={<Cart />} />
       <Route path="*" element={<PageNotFound />} />
     </>
   )
