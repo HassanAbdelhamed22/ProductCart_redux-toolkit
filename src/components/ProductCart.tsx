@@ -1,3 +1,5 @@
+import { addItemToCartAction } from "../app/features/cart/cartSlice";
+import { useAppDispatch } from "../app/store";
 import { Product } from "../interface/index";
 import Button from "./ui/Button";
 
@@ -6,6 +8,7 @@ interface ProductCardProps {
 }
 
 const ProductCart = ({ product }: ProductCardProps) => {
+  const dispatch = useAppDispatch();
   return (
     <div className="w-72 h-[26rem] bg-gray-800 border border-gray-700 rounded-lg p-4 shadow-md flex flex-col">
       <div className="relative">
@@ -25,7 +28,10 @@ const ProductCart = ({ product }: ProductCardProps) => {
         </span>
         <span className="text-blue-400 font-bold">${product.priceAfter}</span>
       </div>
-      <Button className="mt-auto w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+      <Button
+        className="mt-auto w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+        onClick={() => dispatch(addItemToCartAction(product))}
+      >
         Add to Cart
       </Button>
     </div>
