@@ -5,4 +5,5 @@ export interface Product {
   priceBefore: number;
   priceAfter: number;
   discountPercentage: number;
+  quantity: number;
 }
